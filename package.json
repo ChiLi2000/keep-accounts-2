@@ -100,8 +100,11 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.12.1",
     "@types/react-router-dom": "^5.1.6",
-    "@types/styled-components": "^5.1.5"
+    "@types/styled-components": "^5.1.5",
+    "svg-sprite-loader": "4.2.2",
+    "svgo-loader": "2.2.1"
   },
   "jest": {
     "roots": [
