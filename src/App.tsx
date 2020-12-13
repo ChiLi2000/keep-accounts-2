@@ -6,24 +6,24 @@ import {
   Link,
   Redirect}
   from "react-router-dom";
+import styled from "styled-components";
+import Nav from "./components/Nav";
+
+const Wrapper = styled.nav`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+const Main = styled.div`
+  flex-grow: 1;
+  overflow: auto;
+`
+
 function App() {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/tags">标签页</Link>
-          </li>
-          <li>
-            <Link to="/money">记账</Link>
-          </li>
-          <li>
-            <Link to="/statistics">统计</Link>
-          </li>
-        </ul>
-
-        <hr />
-
+      <Wrapper>
+        <Main>
         <Switch>
           <Redirect exact from="/" to="/money"/>
           <Route exact path="/tags">
@@ -39,7 +39,9 @@ function App() {
             <NoMatch />
           </Route>
         </Switch>
-      </div>
+        </Main>
+      <Nav/>
+      </Wrapper>
     </Router>
   );
 }
@@ -47,7 +49,7 @@ function App() {
 function Tags() {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Tags</h2>
     </div>
   );
 }
@@ -55,7 +57,7 @@ function Tags() {
 function Money() {
   return (
     <div>
-      <h2>About</h2>
+      <h2>Money</h2>
     </div>
   );
 }
@@ -63,7 +65,7 @@ function Money() {
 function Statistics() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Statistics</h2>
     </div>
   );
 }
