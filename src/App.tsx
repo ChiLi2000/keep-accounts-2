@@ -9,10 +9,15 @@ import NoMatch from "./views/Nomatch";
 import Money from "./views/Money";
 import Tags from "./views/Tags";
 import Statistics from "./views/Statistics";
+import styled from "styled-components";
 
+const AppWrapper = styled.div`
+  color: #333;
+`
 function App() {
   return (
-    <Router>
+    <AppWrapper>
+      <Router>
         <Switch>
           <Redirect exact from="/" to="/money"/>
           <Route exact path="/tags">
@@ -28,7 +33,8 @@ function App() {
             <NoMatch />
           </Route>
         </Switch>
-    </Router>
+      </Router>
+    </AppWrapper>
   );
 }
 
