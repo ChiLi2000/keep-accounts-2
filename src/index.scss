@@ -17,8 +17,8 @@ body{
   height: 1em;
   display: inline-block;
 }
-button{
-  font-family: inherit;
+button,input{
+  font: inherit;
 }
 :focus{
   outline: none;
