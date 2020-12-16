@@ -3,7 +3,8 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  Redirect}
+  Redirect
+}
   from "react-router-dom";
 import NoMatch from "./views/Nomatch";
 import Money from "./views/Money";
@@ -14,7 +15,8 @@ import {Tag} from "./views/Tag";
 
 const AppWrapper = styled.div`
   color: #333;
-`
+`;
+
 function App() {
   return (
     <AppWrapper>
@@ -22,19 +24,19 @@ function App() {
         <Switch>
           <Redirect exact from="/" to="/money"/>
           <Route exact path="/tags">
-            <Tags />
+            <Tags/>
           </Route>
-          <Route exact path="/tags/:x">
-            <Tag />
+          <Route exact path="/tags/:id">
+            <Tag/>
           </Route>
           <Route exact path="/money">
-            <Money />
+            <Money/>
           </Route>
           <Route exact path="/statistics">
             <Statistics/>
           </Route>
           <Route path="*">
-            <NoMatch />
+            <NoMatch/>
           </Route>
         </Switch>
       </Router>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Layout from "../components/Layout";
 import {useTags} from "../useTags";
 import styled from "styled-components";
@@ -19,7 +19,7 @@ const TagList = styled.ol`
     align-items: center;
     }
   }
-`
+`;
 const Button = styled.button`
   font-size: 18px;
   border:none;
@@ -27,27 +27,28 @@ const Button = styled.button`
   background: #f60;
   border-radius: 4px;
   color:white;
-`
+`;
 const Center = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-`
+`;
 const Space = styled.div`
   height: 16px;
-`
-function Tags(){
+`;
+
+function Tags() {
   const {tags} = useTags();
   return (
     <Layout>
       <TagList>
         {tags.map(tag =>
           <li key={tag.id}>
-         <Link to={'/tags/'+tag}>
-           <span className="onLine">{tag.name}</span>
-           <Icon name="right"/>
-         </Link>
+            <Link to={"/tags/" + tag.id}>
+              <span className="onLine">{tag.id}:{tag.name}</span>
+              <Icon name="right"/>
+            </Link>
           </li>)}
       </TagList>
       <Center>
@@ -57,7 +58,7 @@ function Tags(){
         <Button>新增标签</Button>
       </Center>
     </Layout>
-  )
+  );
 }
 
-export default Tags
+export default Tags;
