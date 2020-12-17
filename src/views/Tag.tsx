@@ -13,7 +13,7 @@ const InputWrapper = styled.div`
   background: white;
   padding: 0 16px;
   margin-top: 8px;
-`
+`;
 const Topbar = styled.header`
   display:flex;
   justify-content: space-between;
@@ -27,9 +27,9 @@ type Params = {
   id: string
 }
 const Tag: React.FC = () => {
-  const {findTag} = useTags();
-  let {id} = useParams<Params>();
-  const tag = findTag(parseInt(id));
+  const {findTag, updateTag} = useTags();
+  let {id: idString} = useParams<Params>();
+  const tag = findTag(parseInt(idString));
   return (
     <Layout>
       <Topbar>
@@ -37,7 +37,10 @@ const Tag: React.FC = () => {
         <span>编辑标签</span>
       </Topbar>
       <InputWrapper>
-        <Input label="标签名" type="text" placeholder="标签名" value={tag.name}/>
+        <Input label="标签名" type="text" placeholder="标签名"
+               value={tag.name} onChange={(e) => {
+               updateTag(tag.id, {name: e.target.value});
+        }}/>
       </InputWrapper>
       <Center>
         <Space/>
