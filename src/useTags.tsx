@@ -30,7 +30,16 @@ const useTags = () => {
     tagsClone.splice(index, 1, {id: id, name: obj.name});
     setTags(tagsClone);
   };
-  return {tags, setTags, findTag, findTagIndex, updateTag};
+  const deleteTag = (id: number) => {
+    //  获取要删除的 tag 下标
+    const index = findTagIndex(id);
+    //  深拷贝 tags 得到 tagsClone
+    const tagsClone = JSON.parse(JSON.stringify(tags));
+    //  把 tagClone 的第 index 删掉
+    tagsClone.splice(index, 1);
+    setTags(tagsClone);
+  };
+  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag};
 };
 
 export {useTags};
