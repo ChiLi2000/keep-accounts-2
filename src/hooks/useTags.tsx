@@ -21,7 +21,7 @@ const useTags = () => {
   // 自定义 hooks 第一次不执行 变化再执行
   useUpdate(() => {
     window.localStorage.setItem("tags", JSON.stringify(tags));
-  }, [tags]);
+  }, tags);
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
   const findTagIndex = (id: number) => {
     let result = -1;
