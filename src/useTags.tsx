@@ -27,7 +27,13 @@ const useTags = () => {
   const deleteTag = (id: number) => {
     setTags(tags.filter(tag => tag.id !== id));
   };
-  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag};
+  const addTag = () => {
+    const tagName = window.prompt("新标签的名称为");
+    if (tagName !== null && tagName !== "") {
+      setTags([...tags, {id: createId(), name: tagName}]);
+    }
+  };
+  return {tags, setTags, findTag, findTagIndex, updateTag, deleteTag, addTag};
 };
 
 export {useTags};
