@@ -34,7 +34,9 @@ const useTags = () => {
     return result;
   };
   const updateTag = (id: number, {name}: { name: string }) => {
-    setTags(tags.map(tag => tag.id ? {id, name: name} : tag));
+    tags.filter(t => t.name === name)[0]
+      ? alert("标签名重复")
+      : setTags(tags.map(tag => tag.id === id ? {id, name: name} : tag));
   };
   const deleteTag = (id: number) => {
     setTags(tags.filter(tag => tag.id !== id));

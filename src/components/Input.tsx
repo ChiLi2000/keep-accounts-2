@@ -19,14 +19,16 @@ const Label = styled.label`
 type Props = {
   label:string
 }&React.InputHTMLAttributes<HTMLInputElement>
-const Input:React.FC<Props> =(props)=>{
-  const {label,children,...rest}= props
-  return (
-    <Label>
-      <span>{props.label}</span>
-      <input {...rest}/>
-    </Label>
-  )
-}
 
+const InputWrapper:React.ForwardRefRenderFunction<HTMLInputElement,Props> =
+  (props,ref)=>{
+    const {label,children,...rest}= props
+    return (
+      <Label>
+        <span>{props.label}</span>
+        <input ref={ref} {...rest}/>
+      </Label>
+    )
+  }
+const Input = React.forwardRef(InputWrapper)
 export {Input}
