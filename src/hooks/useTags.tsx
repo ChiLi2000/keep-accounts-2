@@ -43,8 +43,15 @@ const useTags = () => {
   };
   const addTag = () => {
     const tagName = window.prompt("新标签的名称为");
-    if (tagName !== null && tagName !== "") {
-      setTags([...tags, {id: createId(), name: tagName}]);
+    const tagNames = tags.map(tag=>tag.name)
+    if(tagName !== null){
+      if(tagName===""){
+        alert("标签名不能为空")
+      }else if(tagNames.indexOf(tagName)>=0){
+        alert("标签名重复")
+      }else{
+        setTags([...tags, {id: createId(), name: tagName}]);
+      }
     }
   };
   const getName = (id: number) => {
