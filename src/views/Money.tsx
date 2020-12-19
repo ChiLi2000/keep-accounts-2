@@ -17,7 +17,7 @@ const CategoryWrapper = styled.div`
 
 type Category = "-" | "+"
 const defaultFormDate = {
-  tagIds: [] as number[],
+  tagId: 1,
   note: "",
   category: "-" as Category,
   amount: 0
@@ -38,9 +38,8 @@ function Money() {
   };
   return (
     <MyLayout scrollTop={999}>
-      {selected.note}
-      <TagsSection value={selected.tagIds}
-                   onChange={tagIds => onChange({tagIds})}/>
+      <TagsSection value={selected.tagId}
+                   onChange={(tagId) => onChange({tagId})}/>
       <NotesSection value={selected.note}
                     onChange={(note) => onChange({note})}/>
       <CategoryWrapper>
