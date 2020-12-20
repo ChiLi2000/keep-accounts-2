@@ -7,6 +7,7 @@ import {CategorySection} from "./Money/CategorySection";
 import {NumberPadSection} from "./Money/NumberPadSection";
 import {useRecords} from "hooks/useRecords";
 import {TimeSelector} from "./Money/TimeSelector";
+import dayjs from "dayjs";
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -21,7 +22,8 @@ const defaultFormDate = {
   tagId: 1,
   note: "",
   category: "-" as Category,
-  amount: 0
+  amount: 0,
+  createdAt: dayjs(new Date().toISOString()).format("YYYY-MM-DD")
 };
 
 function Money() {
@@ -41,14 +43,14 @@ function Money() {
     <MyLayout scrollTop={999}>
       <TagsSection value={selected.tagId}
                    onChange={(tagId) => onChange({tagId})}/>
-      <TimeSelector />
+      <TimeSelector value={selected.createdAt}
+                    onChange={(createdAt) => onChange({createdAt})}/>
       <NotesSection value={selected.note}
                     onChange={(note) => onChange({note})}/>
       <CategoryWrapper>
         <CategorySection value={selected.category}
                          onChange={(category) => onChange({category})}/>
       </CategoryWrapper>
-
       <NumberPadSection value={selected.amount}
                         onChange={(amount) => onChange({amount})}
                         onOk={submit}/>
