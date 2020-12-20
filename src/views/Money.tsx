@@ -19,13 +19,11 @@ const CategoryWrapper = styled.div`
 
 type Category = "-" | "+"
 const defaultFormDate = {
-
   tagId: 1,
   note: "",
   category: "-" as Category,
   amount: 0,
   createdAt: moment(new Date().toISOString()).format("YYYY-MM-DD HH:mm:ss")
-
 };
 
 function Money() {
