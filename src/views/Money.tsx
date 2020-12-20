@@ -6,6 +6,7 @@ import {NotesSection} from "./Money/NotesSection";
 import {CategorySection} from "./Money/CategorySection";
 import {NumberPadSection} from "./Money/NumberPadSection";
 import {useRecords} from "hooks/useRecords";
+import {TimeSelector} from "./Money/TimeSelector";
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -40,6 +41,7 @@ function Money() {
     <MyLayout scrollTop={999}>
       <TagsSection value={selected.tagId}
                    onChange={(tagId) => onChange({tagId})}/>
+      <TimeSelector/>
       <NotesSection value={selected.note}
                     onChange={(note) => onChange({note})}/>
       <CategoryWrapper>
