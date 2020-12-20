@@ -6,8 +6,8 @@ import {NotesSection} from "./Money/NotesSection";
 import {CategorySection} from "./Money/CategorySection";
 import {NumberPadSection} from "./Money/NumberPadSection";
 import {useRecords} from "hooks/useRecords";
-import {TimeSelector} from "./Money/TimeSelector";
-import dayjs from "dayjs";
+import {TimeSelector} from "components/TimeSelector";
+import moment from "moment";
 
 const MyLayout = styled(Layout)`
   display: flex;
@@ -19,11 +19,13 @@ const CategoryWrapper = styled.div`
 
 type Category = "-" | "+"
 const defaultFormDate = {
+
   tagId: 1,
   note: "",
   category: "-" as Category,
   amount: 0,
-  createdAt: dayjs(new Date().toISOString()).format("YYYY-MM-DD")
+  createdAt: moment(new Date().toISOString()).format("YYYY-MM-DD HH:mm:ss")
+
 };
 
 function Money() {

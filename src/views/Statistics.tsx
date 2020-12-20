@@ -4,7 +4,8 @@ import {CategorySection} from "./Money/CategorySection";
 import styled from "styled-components";
 import {RecordItem, useRecords} from "hooks/useRecords";
 import {useTags} from "hooks/useTags";
-import day from "dayjs";
+import {TimeSelector} from "components/TimeSelector";
+import moment from "moment";
 
 const CategoryWrapper = styled.div`
   background:white;
@@ -32,10 +33,11 @@ function Statistics() {
   const [category, setCategory] = useState<"-" | "+">("-");
   const {records} = useRecords();
   const {getName} = useTags();
+  const [x, setX] = useState(moment(new Date().toISOString()).format("YYYY-MM"));
   const hash: { [K: string]: RecordItem[] } = {}; //  {'2020-05-11': [item, item], '2020-05-10': [item, item], '2020-05-12': [item, item, item, item]}
   const selectedRecords = records.filter(r => r.category === category);
   selectedRecords.forEach(r => {
-    const key = day(r.createdAt).format("YYYY年MM月DD日");
+    const key = moment(r.createdAt).format("YYYY年MM月DD日");
     if (!(key in hash)) {
       hash[key] = [];
     }
@@ -49,6 +51,9 @@ function Statistics() {
   });
   return (
     <Layout>
+      <TimeSelector value={x}
+                    onChange={(monthValue) => setX(monthValue)}
+                    type="month"/>
       <CategoryWrapper>
         <CategorySection value={category}
                          onChange={value => setCategory(value)}/>
