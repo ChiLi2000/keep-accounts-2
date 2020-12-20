@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import {DatePicker} from "antd";
-import { ConfigProvider } from 'antd'
-import zhCN from 'antd/lib/locale/zh_CN';
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');
+import {ConfigProvider} from "antd";
+import zhCN from "antd/lib/locale/zh_CN";
+import moment from "moment";
+import "moment/locale/zh-cn";
+import dayjs from "dayjs";
+moment.locale("zh-cn");
+
 
 const Wrapper = styled.section`
   background: white;
@@ -13,13 +15,19 @@ const Wrapper = styled.section`
 `;
 
 const TimeSelector: React.FC = () => {
-  const onChange = () => {
-    console.log("...");
+  const [createAt, setCreateAt] = useState(dayjs(new Date().toISOString()).format("YYYY-MM-DD"));
+  const onChange = (date: any, dateString: string) => {
+    setCreateAt(dateString);
+    console.log(dateString)
   };
   return (
     <Wrapper>
+      {createAt}
       <ConfigProvider locale={zhCN}>
-        <DatePicker onChange={onChange}/>
+        <DatePicker onChange={onChange}
+                    value={moment(createAt)}
+                    allowClear={false}
+                    />
       </ConfigProvider>
     </Wrapper>
   );
