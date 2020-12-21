@@ -31,7 +31,7 @@ const Header = styled.h3`
 
 function Statistics() {
   const [category, setCategory] = useState<"-" | "+">("-");
-  const {records} = useRecords();
+  const {records, deleteRecord} = useRecords();
   const {getName} = useTags();
   const [x, setX] = useState(moment(new Date().toISOString()).format("YYYY-MM"));
   const hash: { [K: string]: RecordItem[] } = {}; //  {'2020-05-11': [item, item], '2020-05-10': [item, item], '2020-05-12': [item, item, item, item]}
@@ -64,7 +64,7 @@ function Statistics() {
         </Header>
         <div>
           {records.map(r => {
-            return <Item key={r.tagId}>
+            return <Item key={r.tagId} onClick={() => deleteRecord(r.idR)}>
               <div className="tags onLine">
                 {getName(r.tagId)}</div>
               {r.note && <div className="note">{r.note}</div>}

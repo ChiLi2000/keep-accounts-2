@@ -8,6 +8,7 @@ import {Input} from "components/Input";
 import {Center} from "components/Center";
 import {Space} from "components/Space";
 import {Button} from "components/Button";
+import {useRecords} from "hooks/useRecords";
 
 const InputWrapper = styled.div`
   background: white;
@@ -29,6 +30,7 @@ type Params = {
 
 const Tag: React.FC = () => {
   const {findTag, updateTag, deleteTag} = useTags();
+  const {records, deleteRecords} = useRecords();
   let {id: idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
 
@@ -36,8 +38,13 @@ const Tag: React.FC = () => {
   const onClickBack = () => {
     history.goBack();
   };
-  const refInput = useRef<HTMLInputElement>(null)
-
+  const refInput = useRef<HTMLInputElement>(null);
+  const deleteTagRecords = (id: number) => {
+    deleteTag(id);
+    if (records.filter(r => r.tagId === id)) {
+      deleteRecords(id);
+    }
+  };
   return (
     <Layout>
       <Topbar>
@@ -60,7 +67,7 @@ const Tag: React.FC = () => {
           <Space/>
           <Space/>
           <Space/>
-          <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+          <Button onClick={() => deleteTagRecords(tag.id)}>删除标签</Button>
         </Center>
       </div> : <Center>tag不存在</Center>}
     </Layout>

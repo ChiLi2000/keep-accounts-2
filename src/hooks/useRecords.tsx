@@ -30,5 +30,12 @@ export const useRecords = () => {
     return true;
   };
 
-  return {records, addRecord};
+  const deleteRecord = (id: number) => {
+    setRecords(records.filter(r => r.idR !== id));
+  };
+  const deleteRecords = (id: number) => {
+    setRecords(records.filter(r => r.tagId !== id));
+  };
+
+  return {records, addRecord, deleteRecord, deleteRecords};
 };
