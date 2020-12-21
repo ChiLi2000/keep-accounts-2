@@ -7,6 +7,7 @@ const createId = (): number => {
 };
 const createIdR = (): number => {
   idR += 1;
+  console.log(idR)
   window.localStorage.setItem("idMaxR", JSON.stringify(idR));
   return idR;
 };

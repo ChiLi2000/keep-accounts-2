@@ -34,7 +34,6 @@ function Money() {
   const {addRecord} = useRecords();
   const submit = () => {
     if (addRecord(selected)) {
-      addRecord(selected);
       alert("保存成功");
       setSelected(defaultFormDate);
     }
