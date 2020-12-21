@@ -27,6 +27,7 @@ const NumberPadSection: React.FC<Props> = (props) => {
     if (text === "OK") {
       if (props.onOk) {
         props.onOk();
+        _setOutput('0');
       }
     }
     if ("0123456789.".split("").concat(["删除", "清空"]).indexOf(text) >= 0) {
